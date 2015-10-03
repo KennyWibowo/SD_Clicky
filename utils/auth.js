@@ -89,7 +89,7 @@ module.exports={
     	}
     	else
     	{
-    		req.flash('error', "You must be logged in as a students to continue");
+    		req.flash('error', "You must be logged in as a student to continue");
             res.redirect('/login');
     	}
     }
