@@ -1,0 +1,34 @@
+<!-- <link rel="stylesheet" type="text/less" href="stylesheets/login.css" media="screen" /> -->
+<div class="container page-header">
+    <div class="col col-4 col-stack">
+
+        {{> alerts}}
+
+        <div class="form-signin panel panel-default clearfix signin-panel">
+            <h3><p>Please <strong>Login</strong> or <strong>Register</strong></p></h3>
+
+            <form role="form" action="/login" method="post">
+
+                <div id="username">
+                    <input class="form-control" placeholder="e.g. laserwithlove"
+                           type="text"
+                           name="username"
+                            value="{{prePopUser}}"/>
+                </div>
+
+                <div id="password">
+                    <input class="form-control" placeholder="password" type="password"
+                           name="password"/>
+                </div>
+
+                <div id="submit">
+                    <button class="btn pull-right btn-default" id="btn-login" type="submit" >Login</button>
+                </div>
+
+            </form>
+            <div>
+                <p>Don't have an account? <a href="/request">Request one here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
