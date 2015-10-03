@@ -1,0 +1,29 @@
+<head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+</head>
+	
+<script>
+	angular.module('clickerInput', [])
+		.controller('myCtrl', ['$scope', function($scope) {
+    		$scope.student = {
+    			answer: "something"
+    		};
+
+		}]);
+</script>
+
+<div ng-app="clickerInput" ng-controller="myCtrl">
+
+		<input type="radio" ng-model="student.answer" value="A">
+		A<br/>
+		<input type="radio" ng-model="student.answer" value="B">
+		B<br/>
+		<input type="radio" ng-model="student.answer" value="C">
+		C<br/>
+		<input type="radio" ng-model="student.answer" value="D">
+		D<br/>
+		<input type="radio" ng-model="student.answer" value="E">
+		E<br/>
+	<tt>answer = {{student.answer}}</tt><br/>
+
+</div>	
