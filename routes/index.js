@@ -77,17 +77,30 @@ router.post('/studentInput', function(req, res) {
 
 router.post('/register', function (req, res, next)
     {
-        if (req.user && req.name && req.email && req.password & req.password_conf)
+        if (req.body.username && req.body.name && req.body.email && req.body.password && req.body.password_conf)
         {
-            if (req.password != req.password_conf)
+            if (req.body.password != req.body.password_conf)
             {
-                req.flash('error', "Oy scrub, your passwords don't match at all.")
-                res.render('/register')
+                req.flash('error', "Your passwords don't match ")
+                res.redirect('/register')
+            }
+            else
+            {
+                auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, req.body.type,
+                function(err)
+                {
+                    if (err)
+                    {
+                        req.flash('error', err.message)
+                        res.redirect('/register')
+                    }
+                })
             }
         }
         else
         {
             req.flash('error', "Please have an input for all of the entry boxes")
+            res.redirect('/register')
         }
 
     });
