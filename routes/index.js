@@ -17,7 +17,7 @@ router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
 router.get('/login', function(req, res){
     if(req.user) {
         req.flash('info', "You are already logged in");
-        res.redirect('/derp');
+        res.redirect('/');
     } else {
         console.log("not logged in!");
         res.render('login', { user: req.user,
@@ -35,6 +35,15 @@ router.get('/logout', function(req, res){
     res.redirect('/login');
 });
 
+router.get('/register', function(req, res) {
+    res.render('register', { user: req.user,
+            error: req.flash('error'),
+            warning: req.flash('warning'),
+            info: req.flash('info'),
+            success: req.flash('success')
+        });
+})
+
 router.post('/login', passport.authenticate('local',
         {
             successRedirect: '/',
@@ -43,5 +52,7 @@ router.post('/login', passport.authenticate('local',
             session: true
         })
 );
+
+router.post('/register');
 
 module.exports = router;
