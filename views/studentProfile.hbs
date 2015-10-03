@@ -1,17 +1,57 @@
 <head>
 	<style>
 		h1 {
+			padding: 15px;
+		}
+
+		h2 {
 			text-align: center;
+			color: #0099FF;
+			padding-bottom: 2cm;
 		}
 
 		form {
-			font-size: 20px;
+			font-size: 18px;
 			text-align: center;
-			}
+		}
+
+		.sidebar {
+			position: absolute;
+			background-color: white;
+			top: 55x;
+			left: 0px;
+			width: 250px;
+			height: 600px;
+			display: block;
+		}
+
+		#classes {
+			display: block;
+			padding: 30px;
+			color: black;
+			font-size: 16px;
+			font-weight: bold;
+		}
+
+		span {
+			color: black;
+		}
+
 	</style>
 </head>
 
-<div class="form-signin panel panel-default clearfix signin-panel">
-	<h1>{{user.name}}</h1>
+<body>
+	<div class="sidebar" align="left" color="white">
+		<h1>Welcome,</h1>
+		<h2>{{user.name}}!</h2>
 
-</div>
+	<ul>
+   		<li id="classes"><a href=''><span>Class 1</span></a></li>
+   		<li id="classes"><a href=''><span>Class 2</span></a></li>
+   		<li id="classes"><a href=''><span>Class 3</span></a></li>
+   		<li id="classes"><a href=''><span>Class 4</span></a></li>
+	</ul>
+
+	</div>
+
+</body>
