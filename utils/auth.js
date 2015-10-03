@@ -81,6 +81,7 @@ module.exports={
 
      ensureUserIsStudent:function(req, res, next)
     {
+    	console.log(req.user.type)
     	if(req.user && req.user.type == "student")
     	{
     		next();
@@ -108,7 +109,8 @@ function getUsersId(id, callback)
 
 		if (enter.id = id)
 		{
-			callback(enter);
+			callback(users[enter])
+			console.log(users[enter])
 			return enter
 		}
 
@@ -121,6 +123,6 @@ function getUsersId(id, callback)
 
 passport.deserializeUser(function(id, done) {
   getUsersId(id, function (user) {
-    done(null,user);
+    done(null,user)
   })
 })
