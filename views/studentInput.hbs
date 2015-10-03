@@ -3,26 +3,20 @@
 </head>
 	
 <script>
-	angular.module('clickerInput', [])
-		.controller('myCtrl', ['$scope', function($scope) {
-    		$scope.student = {
-    			answer: "something"
-    		};
 
-		}]);
 </script>
 
-<div ng-app="clickerInput" ng-controller="myCtrl">
+<div>
 
-		<input type="radio" ng-model="student.answer" value="A">
+		<input type="radio" value="A">
 		A<br/>
-		<input type="radio" ng-model="student.answer" value="B">
+		<input type="radio" value="B">
 		B<br/>
-		<input type="radio" ng-model="student.answer" value="C">
+		<input type="radio" value="C">
 		C<br/>
-		<input type="radio" ng-model="student.answer" value="D">
+		<input type="radio" value="D">
 		D<br/>
-		<input type="radio" ng-model="student.answer" value="E">
+		<input type="radio" value="E">
 		E<br/>
 	<tt>answer = {{student.answer}}</tt><br/>
 
