@@ -5,10 +5,16 @@
   "author": "Kenny Wibowo <kewibowo@eng.ucsd.edu>",
   "contributors" : [{
       "name": "Varun Sujit",
-      "email": "vsujit@ucsd.edu"
+      "email": "vsujit@eng.ucsd.edu"
     },
-    {},
-    {}],
+    {
+      "name": "Karen Lo",
+      "email": "k8lo@eng.ucsd.edu"
+    },
+    {
+      "name": "Joseph Thomas",
+      "email": "joseph.thomas.c@gmail.com"
+    }],
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
