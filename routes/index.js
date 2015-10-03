@@ -44,6 +44,14 @@ router.get('/register', function(req, res) {
         });
 })
 
+router.get('/studentInput', function(req, res) {
+    res.render('studentInput');
+});
+
+router.get('/teacherInput', function(req, res) {
+    res.render('teacherInput');
+});
+
 router.post('/login', passport.authenticate('local',
         {
             successRedirect: '/',
