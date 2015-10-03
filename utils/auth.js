@@ -18,7 +18,7 @@ passport.use(new LocalStrategy
 	{
 		session: true
 	},
-	function(username, password, done)
+	function(req, username, password, done)
 	{
 		console.log(username, password)
 		if (!users[username])
@@ -27,7 +27,7 @@ passport.use(new LocalStrategy
 		}
 		if (password == users[username].password)
 		{
-			return done(null, users[username])
+			return done(null, users[username], req.flash('success', "Now logged in"))
 		}
 		return done(null, false)
 
@@ -51,6 +51,7 @@ module.exports={
 		{
 			users[username]={"password":password, "id":currentid++, "type":type, "name":name, "email":email}
 			console.log(users)
+			return callback(null, username)
 		}
 
 	},

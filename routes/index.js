@@ -6,7 +6,7 @@ var auth = require('../utils/auth');
 
 /* GET home page. */
 router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
-    res.render('login', { user: req.user,
+    res.render('index', { user: req.user,
             error: req.flash('error'),
             warning: req.flash('warning'),
             info: req.flash('info'),
@@ -96,13 +96,19 @@ router.post('/register', function (req, res, next)
             else
             {
                 auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, req.body.type,
-                function(err)
+                function(err, user)
                 {
                     if (err)
                     {
                         req.flash('error', err.message)
                         res.redirect('/register')
                     }
+                    else
+                    {
+                        req.flash('success', "Account " + req.body.username + " sucessfully created")
+                        res.redirect('/login')
+                    }
+                    
                 })
             }
         }
