@@ -65,6 +65,10 @@ router.post('/login', passport.authenticate('local',
         })
 );
 
+router.post('/studentInput', function(req, res) {
+    console.dir(req.body);
+})
+
 router.post('/register', function (req, res, next)
     {
         if (req.user && req.name && req.email && req.password & req.password_conf)
