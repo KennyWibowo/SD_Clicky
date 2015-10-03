@@ -6,7 +6,7 @@ var auth = require('../utils/auth');
 
 /* GET home page. */
 router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
-    res.render('index', { user: req.user,
+    res.render('sampleAnalysis', { user: req.user,
             error: req.flash('error'),
             warning: req.flash('warning'),
             info: req.flash('info'),
