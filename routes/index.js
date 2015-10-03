@@ -53,6 +53,16 @@ router.get('/studentInput', function(req, res) {
         });
 });
 
+router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent, function(req, res) {
+    res.render('studentProfile', {
+        user: req.user,
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    })
+})
+
 router.post('/teacherInput', function(req, res){
     console.dir(req.body);
 
