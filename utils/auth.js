@@ -2,7 +2,8 @@ var passport = require("passport")
 var LocalStrategy = require("passport-local").Strategy
 var users = {"Swashbuckler":{password:"5678", id:1, type:"student"}}
 var currentid = 2;
-var bcrypt = require('bcrypt')
+
+//var bcrypt = require('bcrypt')
 
 // bcrypt.genSalt(15, function(err, salt) {
 // bcrypt.hash('')
