@@ -48,6 +48,10 @@ router.get('/studentInput', function(req, res) {
     res.render('studentInput');
 });
 
+router.post('/teacherInput', function(req, res){
+    console.dir(req.body);
+
+})
 router.get('/teacherInput', function(req, res) {
     res.render('teacherInput');
 });
