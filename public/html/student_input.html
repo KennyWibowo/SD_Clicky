@@ -2,19 +2,29 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 </head>
 	
-<div ng-app="myApp" ng-controller="myCtrl">
+<script>
+	angular.module('clickerInput', [])
+		.controller('myCtrl', ['$scope', function($scope) {
+    		$scope.student = {
+    			answer: "something"
+    		};
 
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
-<br>
-Full Name: {{firstName + " " + lastName}}
+		}]);
+</script>
+
+<div ng-app="clickerInput" ng-controller="myCtrl">
+
+		<input type="radio" ng-model="student.answer" value="A">
+		A<br/>
+		<input type="radio" ng-model="student.answer" value="B">
+		B<br/>
+		<input type="radio" ng-model="student.answer" value="C">
+		C<br/>
+		<input type="radio" ng-model="student.answer" value="D">
+		D<br/>
+		<input type="radio" ng-model="student.answer" value="E">
+		E<br/>
+	<tt>answer = {{student.answer}}</tt><br/>
 
 </div>	
 
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
-});
-</script>
