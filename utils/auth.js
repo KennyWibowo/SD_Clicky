@@ -19,13 +19,14 @@ passport.use(new LocalStrategy
 	},
 	function(username, password, done)
 	{
-		if (!users.username)
+		console.log(username, password)
+		if (!users[username])
 		{
 			return done(null,false)
 		}
-		if (password == users.username.password)
+		if (password == users[username].password)
 		{
-			return done(null, users.username)
+			return done(null, users[username])
 		}
 		return done(null, false)
 
@@ -64,7 +65,7 @@ function getType(username)
 
 function getUsersId(id, callback)
 {
-	users.forEach(function(enter) {
+	for (enter in users) {
 
 		if (enter.id = id)
 		{
@@ -75,12 +76,12 @@ function getUsersId(id, callback)
 		callback(null);
 		return null
 
-	})
+	}
 
 }
 
 passport.deserializeUser(function(id, done) {
   getUsersId(id, function (user) {
-    done(err, user);
+    done(null,user);
   })
 })
