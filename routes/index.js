@@ -71,9 +71,18 @@ router.post('/login', passport.authenticate('local',
 );
 
 router.post('/studentInput', function(req, res) {
-    req.flash('success', 'Submitted!');
-    res.redirect('/studentInput');
-})
+    console.dir(req.body);
+    if(req.body.choice)
+    {
+
+        req.flash('success', "Submitted!");
+        res.redirect('/studentInput');
+    } else {
+        req.flash('error', "Please pick an answer");
+        res.redirect('/studentInput');
+    }
+    
+});
 
 router.post('/register', function (req, res, next)
     {
