@@ -40,7 +40,17 @@ passport.use(new LocalStrategy
 module.exports={
 	registerUser:function(username, password){
 		users[username]={"password":password, "id":currentid++}
-	}
+	},
+	
+	ensureUserLoggedIn: function (req, res, next) {
+        // not logged in test
+        if( req.user ) {
+            next();
+        } else {
+            req.flash('error', "You must be logged in to continue");
+            res.redirect('/login');
+        }
+    },
 }
 
 passport.serializeUser(function(user, done) {
