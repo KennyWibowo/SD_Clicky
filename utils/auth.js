@@ -79,7 +79,7 @@ module.exports={
     		req.flash('error', "You must be logged in as a teacher to continue");
             res.redirect('/login');
     	}
-    }
+    },
 
      ensureUserIsStudent:function(req, res, next)
     {
