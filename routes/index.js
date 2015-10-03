@@ -61,6 +61,21 @@ router.post('/login', passport.authenticate('local',
         })
 );
 
-router.post('/register');
+router.post('/register', function (req, res, next)
+    {
+        if (req.user && req.name && req.email && req.password & req.password_conf)
+        {
+            if (req.password != req.password_conf)
+            {
+                req.flash('error', "Oy scrub, your passwords don't match at all.")
+                res.render('/register')
+            }
+        }
+        else
+        {
+            req.flash('error', "Please have an input for all of the entry boxes")
+        }
+
+    });
 
 module.exports = router;
