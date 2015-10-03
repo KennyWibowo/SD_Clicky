@@ -80,6 +80,19 @@ module.exports={
             res.redirect('/login');
     	}
     }
+
+     ensureUserIsStudent:function(req, res, next)
+    {
+    	if(req.user && req.user.type == "student")
+    	{
+    		next();
+    	}
+    	else
+    	{
+    		req.flash('error', "You must be logged in as a students to continue");
+            res.redirect('/login');
+    	}
+    }
 }
 
 passport.serializeUser(function(user, done) {
