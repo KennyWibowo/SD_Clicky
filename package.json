@@ -6,11 +6,22 @@
   "contributors": [
     {
       "name": "Varun Sujit",
-      "email": "vsujit@ucsd.edu"
+      "email": "vsujit@eng.ucsd.edu"
     },
+<<<<<<< HEAD
     {},
     {}
   ],
+=======
+    {
+      "name": "Karen Lo",
+      "email": "k8lo@eng.ucsd.edu"
+    },
+    {
+      "name": "Joseph Thomas",
+      "email": "joseph.thomas.c@gmail.com"
+    }],
+>>>>>>> origin/master
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
