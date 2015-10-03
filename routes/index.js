@@ -45,7 +45,12 @@ router.get('/register', function(req, res) {
 })
 
 router.get('/studentInput', function(req, res) {
-    res.render('studentInput');
+    res.render('studentInput', { user: req.user,
+            error: req.flash('error'),
+            warning: req.flash('warning'),
+            info: req.flash('info'),
+            success: req.flash('success')
+        });
 });
 
 router.post('/teacherInput', function(req, res){
@@ -66,7 +71,8 @@ router.post('/login', passport.authenticate('local',
 );
 
 router.post('/studentInput', function(req, res) {
-    console.dir(req.body);
+    req.flash('success', 'Submitted!');
+    res.redirect('/studentInput');
 })
 
 router.post('/register', function (req, res, next)
