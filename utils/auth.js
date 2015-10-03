@@ -16,20 +16,18 @@ var currentid = 3;
 passport.use(new LocalStrategy
   (
 	{
-		session: true
+		session: true,
+		passReqToCallback: true
 	},
 	function(req, username, password, done)
 	{
-		console.log(username, password)
-		if (!users[username])
-		{
-			return done(null,false)
-		}
-		if (password == users[username].password)
+		console.log(req)
+
+		if (users[username] && password == users[username].password)
 		{
 			return done(null, users[username], req.flash('success', "Now logged in"))
 		}
-		return done(null, false)
+		return done(null, false, req.flash('error', "Invalid Username and/or password"))
 
 	}
 
