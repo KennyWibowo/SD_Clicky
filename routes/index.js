@@ -265,6 +265,25 @@ router.post('/teacher-lecturecreate', function(req, res) {
 
 });
 
+router.post('/teacher-studentadd', function(req, res) {
+    if (!req.body.usrname || req.body.className == "") {
+        req.flash('error', "Must Enter a Class name")
+        res.redirect('/teacherAdmin')
+    }
+    var classes = utils.getAllClasses()
+    for (var key in classes) {
+        if (req.body.className == classes[key].name) {
+            req.flash('error', "Class already exists")
+            res.redirect('/teacherAdmin')
+        }
+    }
+
+    utils.createClass(req.body.className, req.user);
+    req.flash('success', "Class created!")
+    res.redirect('/teacherAdmin')
+
+});
+
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
     if (!req.query.c) {
         req.flash('error', "No such query!"),
