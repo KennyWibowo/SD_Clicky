@@ -193,6 +193,17 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
     })
 })
 
+router.get('/questionGraph', function(req, res) {
+    res.render('questionGraph', {
+        classes: getClassesOfUser(req.user),
+        user: req.user,
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    });
+});
+
 router.get('/sampleAnalysis', function(req, res) {
     res.render('sampleAnalysis');
 })
