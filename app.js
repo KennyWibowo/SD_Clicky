@@ -20,6 +20,8 @@ app.set('view engine', 'hbs');
 
 // register partial
 hbs.registerPartial("alerts", fs.readFileSync("views/alerts.hbs", 'utf8'));
+hbs.registerPartial("studentsidebar", fs.readFileSync("views/studentSidebar.hbs", 'utf8'));
+hbs.registerPartial("teachersidebar", fs.readFileSync("views/teacherSidebar.hbs", 'utf8'));
 hbs.registerHelper("addone", function(value, options) {
   return parseInt(value) + 1;
 });

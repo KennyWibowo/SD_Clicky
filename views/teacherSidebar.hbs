@@ -1,0 +1,7 @@
+<ul id="classlist" class="nav navbar-nav side-nav">
+    <li id="welcome">Welcome,</li>
+    <li id="name">{{user.name}}!</li>
+    {{#each classes}}
+        <li><a href="classAdmin?c={{@key}}"><i class="fa fa-fw fa-dashboard"></i> {{this.name}}</a></li>
+    {{/each}}
+</ul>

@@ -192,10 +192,12 @@ router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
         req.flash('error'),
             res.redirect('/')
     }
+
     console.log("c is set to " + req.query.c);
     res.render('classPage', {
         user: req.user,
         myclass: utils.getClass(req.query.c),
+        classes: getClassesOfUser(req.user),
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),
