@@ -50,7 +50,24 @@
                 </li>
             {{/each}}
         </ul>
-        </div>
+    </div>
+
+
+
+    <div id="submit">
+        <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock">
+    </div>
+    <div id="submit">
+        <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Lock">
+    </div>
+    <div class="form-group">
+        <label>Selects</label>
+        <select class="form-control">
+        {{#each myclass.lectures}}
+        <option>Lecture {{addone @index}}</option>
+        {{/each}}
+        </select>
+    </div>
     
 
     
