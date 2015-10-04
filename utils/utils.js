@@ -39,11 +39,26 @@ var classes = {
             }, {
                 "questionName": "Fav Food",
                 "question": "What's your favorite food?",
-                "a": "Siraj's breakfast burrito",
-                "b": "Gyudon",
-                "c": "Lil Dipper ice cream",
-                "d": "Milk",
-                "e": "Sushi",
+                "a": {
+                    "answer": "Siraj 's breakfast burrito",
+                    "studentAnswered": {}
+                },
+                "b": {
+                    "answer": "Gyudon",
+                    "studentAnswered": {}
+                },
+                "c": {
+                    "answer": "Lil Dipper ice cream",
+                    "studentAnswered": {}
+                },
+                "d": {
+                    "answer": "Milk",
+                    "studentAnswered": {}
+                },
+                "e": {
+                    "answer": "Sushi",
+                    "studentAnswered": {}
+                },
                 "correct": "a"
             }]
         }, {
@@ -51,11 +66,26 @@ var classes = {
             "questions": [{
                 "questionName": "OddOneOut",
                 "question": "What food was not present at SDHacks?",
-                "a": "Pizza",
-                "b": "Boba",
-                "c": "Spaghetti",
-                "d": "Sun Chips",
-                "e": "Apples",
+                "a": {
+                    "answer": "Pizza",
+                    "studentAnswered": {}
+                },
+                "b": {
+                    "answer": "Boba",
+                    "studentAnswered": {}
+                },
+                "c": {
+                    "answer": "Spaghetti",
+                    "studentAnswered": {}
+                },
+                "d": {
+                    "answer": "Sun Chips",
+                    "studentAnswered": {}
+                },
+                "e": {
+                    "answer": "Apples",
+                    "studentAnswered": {}
+                },
                 "correct": "e"
             }]
         }]
