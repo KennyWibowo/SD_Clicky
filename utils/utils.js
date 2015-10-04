@@ -35,7 +35,8 @@ module.exports = {
         classes[nextClassNumber++] = {
             "name": name,
             "teacher": teacher,
-            "" : ""
+            "pupils" : [],
+            "lectures": {}
         }
     },
     randomGenerator: function(passLength) {
@@ -103,6 +104,9 @@ module.exports = {
 
 
     },
+    getClass: function( classID ){
+      return classes[classID];
+          },
     lectureCreate: function(user, className, lectureName, lectureTime) {
         if (!user.classes) {
             var error = new Error("You need to create a class first.");
