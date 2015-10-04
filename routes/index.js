@@ -266,10 +266,11 @@ router.post('/teacher-lecturecreate', function(req, res) {
 });
 
 router.post('/teacher-studentadd', function(req, res) {
-    if (!req.body.usrname || req.body.className == "") {
+    if (!req.body.usrname || req.body.usrname == "") {
         req.flash('error', "No such student exists")
         res.redirect('/teacherAdmin')
     }
+
     var classes = utils.getAllClasses()
     var err = false;
     for (var key in classes) {
