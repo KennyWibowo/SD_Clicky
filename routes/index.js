@@ -200,6 +200,23 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
     })
 })
 
+router.post( '/teacher-classcreate', function( req, res){
+    if(!req.body.className || req.body.className == "")
+    {
+        req.flash('error', "Must Enter a Class name")
+        res.redirect('/teacherAdmin')
+    }
+    var classes = utils.getAllClasses()
+    for( var key in classes)
+    {
+        if(className == classes[key].name){
+            req.flash('error', "Class already exists")
+        res.redirect('/teacherAdmin')
+        }
+    }
+
+}
+
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
     if (!req.query.c) {
         req.flash('error', "No such query!"),
