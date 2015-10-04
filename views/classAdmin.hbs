@@ -45,7 +45,11 @@
                     {{#each this.questions}}
                         <li><a href='/questionGraph?q={{this.questionName}}'>{{this.question}}</a></li>
                     {{/each}}
+                    <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+                    <div class="form-group">
                     <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
+                    </div>
+                    </form>
                     </ul>
                 </li>
             {{/each}}
