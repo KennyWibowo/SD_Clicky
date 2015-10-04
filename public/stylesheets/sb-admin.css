@@ -54,6 +54,10 @@ body {
     float: left;
 }
 
+.side-nav>li {
+    float: none;
+}
+
 .top-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
