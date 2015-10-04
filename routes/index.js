@@ -4,6 +4,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 var auth = require('../utils/auth');
 var utils = require('../utils/utils')
+var thisclass;
 
 /* GET home page. */
 router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
@@ -176,6 +177,7 @@ router.get("/classAdmin", auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, fun
         req.flash('error', 'Incorrect class page')
         res.redirect('/')
     }
+    thisclass = utils.getClass(req.query.c);
     res.render('classAdmin', {
         classes: getClassesOfUser(req.user),
         user: req.user,
@@ -252,6 +254,14 @@ router.post('/teacher-classcreate', function(req, res) {
     utils.createClass(req.body.className, req.user);
     req.flash('success', "Class created!")
     res.redirect('/teacherAdmin')
+
+});
+
+router.post('/teacher-lecturecreate', function(req, res) {
+
+    utils.lectureCreate(thisclass);
+    req.flash('success', "Lecture created!")
+    res.redirect(req.get('referer'))
 
 });
 

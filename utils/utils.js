@@ -98,7 +98,7 @@ var randomGenerator = function(passLength) {
     var classPass = "";
 
     for (var i = 0; i < passLength; i++) {
-        classPass += symbols[Math.rand() * 36];
+        classPass += symbols[Math.random() * 36];
     }
 
     return classPass;
@@ -138,12 +138,8 @@ module.exports = {
 
         return null;
     },
-    lectureCreate: function(classID, lectureName, lectureTime) {
-        if (!classes[classID]) {
-            var error = new Error("Pick one of the classes you've already created");
-            return callback(error);
-        }
-        classes[className].lectures.push({
+    lectureCreate: function(class1) {
+        class1.lectures.push({
             "questions": [],
             "pass": randomGenerator(8)
         });

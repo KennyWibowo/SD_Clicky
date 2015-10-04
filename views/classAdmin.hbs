@@ -26,6 +26,17 @@
         </div>
         <!-- /.row -->
 
+<form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+
+                    <div class="form-group">
+                        <label>Create a new lecture</label>
+                        <div id="submit">
+                            <input type="submit" class="btn btn-default" id="btn-login" value="Create">
+                        </div>
+                    </div>
+
+
+                </form>
     <div id="acdnmenu">
         <ul>
             {{#each myclass.lectures}}
@@ -38,7 +49,11 @@
                 </li>
             {{/each}}
         </ul>
-    </div>
+        </div>
+    
+
+    
+      
 
 </div>
     <!-- /.container-fluid -->
