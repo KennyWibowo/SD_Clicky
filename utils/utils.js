@@ -17,23 +17,23 @@ var classes = {
                 "question": "How do you get swole?",
                 "a": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentsAnswered": []
                 },
                 "b": {
                     "answer": "Be Joe",
-                    "studentsAnswered": {}
+                    "studentsAnswered": []
                 },
                 "c": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentsAnswered": []
                 },
                 "d": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentsAnswered": []
                 },
                 "e": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentsAnswered": []
                 },
                 "correct": "b"
             }, {
@@ -41,23 +41,23 @@ var classes = {
                 "question": "What's your favorite food?",
                 "a": {
                     "answer": "Siraj 's breakfast burrito",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "b": {
                     "answer": "Gyudon",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "c": {
                     "answer": "Lil Dipper ice cream",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "d": {
                     "answer": "Milk",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "e": {
                     "answer": "Sushi",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "correct": "a"
             }]
@@ -68,23 +68,23 @@ var classes = {
                 "question": "What food was not present at SDHacks?",
                 "a": {
                     "answer": "Pizza",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "b": {
                     "answer": "Boba",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "c": {
                     "answer": "Spaghetti",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "d": {
                     "answer": "Sun Chips",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "e": {
                     "answer": "Apples",
-                    "studentAnswered": {}
+                    "studentAnswered": []
                 },
                 "correct": "e"
             }]
@@ -109,7 +109,7 @@ module.exports = {
     createClass: function(name, teacher) {
         classes[nextClassNumber] = {
             "name": name,
-            "teacher": teacher.name,
+            "teacher": teacher.usrname,
             "lectures": []
         }
 
