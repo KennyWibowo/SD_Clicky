@@ -15,7 +15,7 @@ var users = {
         type: "teacher",
         name: "Jenny Smith",
         email: "iamateacher@yohoho.com",
-        classes: [utils.getClass[1]]
+        classes: [1]
     }
 }
 var currentid = 3;
