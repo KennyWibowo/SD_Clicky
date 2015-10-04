@@ -31,7 +31,7 @@ var randomGenerator = function(passLength) {
 
     var classPass = "";
 
-    for (i = 0; i < passLength; i++) {
+    for (var i = 0; i < passLength; i++) {
         classPass += symbols[Math.rand() * 36];
     }
 
