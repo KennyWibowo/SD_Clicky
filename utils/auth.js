@@ -100,7 +100,12 @@ passport.serializeUser(function(user, done) {
 
 function getType(username)
 {
-	return users.username.type
+	return users[username].type
+}
+
+function getName(username)
+{
+    return users[username].name
 }
 
 function getUsersId(id, callback)
