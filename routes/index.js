@@ -112,7 +112,7 @@ router.post('/teachregister', function(req, res, next) {
 })
 
 router.post("/lock-lecture", function(req, res) {
-    if (!req.query.l) {
+    /*if (!req.query.l) {
         req.flash('error', "Get outta hea");
         res.redirect(req.get('referer'));
     }
@@ -138,6 +138,9 @@ router.post("/lock-lecture", function(req, res) {
     var truetest = req.body.locked == "Locked" ? true : false;
 
     mylect.locked = truetest;
+
+    req.flash('success', "Lecture locked set to " + truetest);
+    res.redirect(req.get('referer'));*/
 
 })
 
