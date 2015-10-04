@@ -146,7 +146,7 @@ router.post('/studentInput',  function(req, res) {
     if (req.body.choice) {
 
         req.flash('success', "Submitted!");
-        res.redirect('/studentProfile');
+        res.redirect('classPage?c=1');
     } else {
         req.flash('error', "Please pick an answer");
         res.redirect('/studentInput?q=' + req.body.urlquery);
