@@ -121,10 +121,20 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
     })
 })
 
-router.get('/classPage', function(req, res) {
+router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
+    if(!req.query.c) {
+        req.flash('error'),
+        res.redirect('/')
+    }
+
+    if(!utils.getClass(req.query.c)) {
+        req.flash('error'),
+        res.redirect('/')
+    } 
     console.log("c is set to " + req.query.c);
     res.render('classPage', {
         user: req.user,
+        myclass: utils.getClass(req.query.c),
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),
