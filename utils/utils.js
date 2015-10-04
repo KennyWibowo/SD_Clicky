@@ -114,34 +114,6 @@ module.exports = {
             "lectures": {}
         }
     },
-    addClass: function(className, classSize, lectureTimes, user, callback) {
-        if (user.type != "teacher") {
-            var error = new Error("Sorry, only teachers can create classes.");
-            return callback(error);
-        }
-        if (!user.classes) {
-            user.classes = {};
-        }
-        if (!user.classes[className]) {
-            var error = new Error("Sorry, a class with this name has already been created.");
-            return callback(error);
-        }
-        if (classSize < 1) {
-            var error = new Error("You need at least one student in your class.");
-            return callback(error);
-        }
-        if (lectureNumber < 1) {
-            var error = new Error("You need at least one lecture in your class.");
-            return callback(error);
-        }
-        user.classes[className] = {
-            "classSize": classSize,
-            "lectures": [],
-            "lectureTimes": lectureTimes
-        };
-
-
-    },
     getClass: function(classID) {
         return classes[classID];
     },

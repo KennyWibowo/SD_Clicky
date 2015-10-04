@@ -213,6 +213,10 @@ router.post('/teacher-classcreate', function(req, res) {
         }
     }
 
+    
+    req.flash('error', "Class already exists")
+    res.redirect('/teacherAdmin')
+
 });
 
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
