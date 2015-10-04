@@ -3,6 +3,7 @@ var router = express.Router();
 var flash = require('connect-flash');
 var passport = require('passport');
 var auth = require('../utils/auth');
+var utils = require('../utils/utils')
 
 /* GET home page. */
 router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
@@ -60,8 +61,8 @@ router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent,
         warning: req.flash('warning'),
         info: req.flash('info'),
         success: req.flash('success')
-    })
-})
+    });
+});
 
 router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, function(req, res) {
     res.render('teacherAdmin', {
@@ -72,6 +73,17 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
         success: req.flash('success')
     })
 })
+
+router.get('/classPage', function(req, res) {
+    console.log("c is set to " + req.query.c);
+    res.render('classPage', {
+        user: req.user,
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    })
+}); 
 
 router.post('/teacherInput', function(req, res){
     console.dir(req.body);
