@@ -1,7 +1,7 @@
 var passport = require("passport")
 var LocalStrategy = require("passport-local").Strategy
 var users = {"Swashbuckler":{password:"5678", id:1, type:"student", name:"Black beard", email:"pirates4lyfe@yohoho.com"},
-"Ms.Smith":{password:"thisisapassword", id:2, type:"teacher", name:"Jenny Smith", email:"iamateacher@yohoho.com"}}
+"Ms.Smith":{password:"thisisapassword", id:2, type:"teacher", name:"Jenny Smith", email:"iamateacher@yohoho.com", pupils:["Swashbuckler"]}}
 var currentid = 3;
 
 //var bcrypt = require('bcrypt')
