@@ -126,19 +126,20 @@ function getName(username)
 
 function getUsersId(id, callback)
 {
-	for (enter in users) {
+	for (enter in users) 
+    {
 
-		if (enter.id = id)
+		if (users[enter].id == id)
 		{
 			callback(users[enter])
 			console.log(users[enter])
 			return enter
 		}
 
-		callback(null);
-		return null
-
 	}
+
+    callback(null)
+    return null
 
 }
 
