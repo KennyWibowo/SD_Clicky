@@ -112,7 +112,8 @@ module.exports = {
         classes[nextClassNumber] = {
             "name": name,
             "teacher": teacher.name,
-            "lectures": []
+            "lectures": [],
+            "pupils": []
         }
 
         teacher.classes.push(nextClassNumber);
@@ -157,6 +158,10 @@ module.exports = {
             "questions": [],
             "pass": randomGenerator(8)
         });
+    },
+    addStudent: function( class1, name)
+    {
+        class1.pupils.push(name);
     },
     questionAdd: function(user, className, lectureNumber, questionName, question, a, b, c, d, e, answer) {
         if (!classes[classID]) {

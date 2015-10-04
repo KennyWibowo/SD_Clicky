@@ -314,25 +314,8 @@ router.post('/teacher-questioncreate', function(req, res) {
 
 
 router.post('/teacher-studentadd', function(req, res) {
-    if (!req.body.usrname || req.body.usrname == "") {
-        req.flash('error', "No such student exists")
-        res.redirect('/teacherAdmin')
-    }
-
-    var classes = utils.getAllClasses()
-    var err = false;
-    for (var key in classes) {
-        if (req.body.className == classes[key].name) {
-            err = true;
-        }
-    }
-
-    if (!err) {
-        req.flash('error', "Class does not exists")
-        res.redirect('/teacherAdmin')
-    }
-
-    utils.createClass(req.body.className, req.user);
+    
+    utils.addStudent(utils.getClassByName(req.body.classAdd) , req.body.studentName);
     req.flash('success', "Student added!")
     res.redirect('/teacherAdmin')
 
