@@ -132,6 +132,7 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
     res.render('studentInput', {
         user: req.user,
+        classes: getClassesOfUser(req.user),
         myclass: utils.getClass(req.query.q),
         query: req.query.q,
         error: req.flash('error'),
@@ -146,7 +147,7 @@ router.post('/studentInput',  function(req, res) {
     if (req.body.choice) {
 
         req.flash('success', "Submitted!");
-        res.redirect('classPage?c=1');
+        res.redirect('/studentInput?q=' + req.body.urlquery);
     } else {
         req.flash('error', "Please pick an answer");
         res.redirect('/studentInput?q=' + req.body.urlquery);
