@@ -30,8 +30,7 @@ var classes = {
                 "d": "Milk",
                 "e": "Sushi",
                 "correct": "a"
-            }
-            ]
+            }]
         }, {
             "pass": "456efgh",
             "questions": [{
@@ -103,6 +102,21 @@ module.exports = {
     },
     getAllClasses: function() {
         return classes;
+    },
+    getQuestion: function(questionName) {
+        for (var key1 in classes) {
+            var thisclass = classes[key1];
+            for (var key2 in thisclass.lectures) {
+                var lecture = thisclass.lectures[key2];
+                for (var key3 in lecture.questions) {
+                    var question = lecture.questions[key3];
+                    if (question.questionName == questionName)
+                        return question;
+                }
+            }
+        }
+
+        return null;
     },
     lectureCreate: function(classID, lectureName, lectureTime) {
         if (!classes[classID]) {
