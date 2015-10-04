@@ -267,19 +267,24 @@ router.post('/teacher-lecturecreate', function(req, res) {
 
 router.post('/teacher-studentadd', function(req, res) {
     if (!req.body.usrname || req.body.className == "") {
-        req.flash('error', "Must Enter a Class name")
+        req.flash('error', "No such student exists")
         res.redirect('/teacherAdmin')
     }
     var classes = utils.getAllClasses()
+    var err = false;
     for (var key in classes) {
         if (req.body.className == classes[key].name) {
-            req.flash('error', "Class already exists")
-            res.redirect('/teacherAdmin')
+            err = true;
         }
     }
 
+    if (!err) {
+        req.flash('error', "Class does not exists")
+        res.redirect('/teacherAdmin')
+    }
+
     utils.createClass(req.body.className, req.user);
-    req.flash('success', "Class created!")
+    req.flash('success', "Student added!")
     res.redirect('/teacherAdmin')
 
 });
