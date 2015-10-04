@@ -29,15 +29,15 @@ var classes = {
 var nextClassNumber = 2;
 var randomGenerator = function(passLength) {
 
-        var classPass = "";
+    var classPass = "";
 
-        for (i = 0; i < passLength; i++) {
-            classPass += symbols[Math.rand() * 36];
-        }
-
-        return classPass;
-
+    for (i = 0; i < passLength; i++) {
+        classPass += symbols[Math.rand() * 36];
     }
+
+    return classPass;
+
+}
 
 module.exports = {
     createClass: function(name, teacher) {
@@ -79,7 +79,7 @@ module.exports = {
     getClass: function(classID) {
         return classes[classID];
     },
-    getAllClasses: function(){
+    getAllClasses: function() {
         return classes;
     },
     lectureCreate: function(classID, lectureName, lectureTime) {
