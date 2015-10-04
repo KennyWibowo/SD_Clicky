@@ -1,5 +1,7 @@
-<link href="/stylesheets/accordionmenu.css" rel="stylesheet" type="text/css" />
-<script src="/js/lib/accordionmenu.js" type="text/javascript"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <style>
 @media(min-width:768px) {
     body {
@@ -28,7 +30,26 @@
                 </div>
             </div>
         </form>
-        <div id="acdnmenu">
+        <div id="accordion">
+            {{#each myclass.lectures}}
+                <h3 id="{{@index}}"><b>Lecture {{addone @index}}</b></h3>
+                <div>
+                    <p>
+                        {{#each this.questions}}
+                            <a href='/studentInput?q={{this.questionName}}'>{{addone @index}}. {{this.question}}</a><br>
+                        {{/each}}
+
+                        <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
+                            </div>
+                        </form>
+                    </p>
+                </div>
+            {{/each}}
+        </div>
+
+        <!-- <div id="acdnmenu">
             <ul>
                 {{#each myclass.lectures}}
                 <li><b>Lecture {{addone @index}}</b>
@@ -45,7 +66,7 @@
                 </li>
                 {{/each}}
             </ul>
-        </div>
+        </div> -->
         <div id="submit">
             <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock">
         </div>
@@ -63,3 +84,11 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+
+<script>
+
+$(function() {
+    $( "#accordion" ).accordion();
+});
+
+</script>
