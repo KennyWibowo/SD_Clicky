@@ -111,6 +111,22 @@ router.post('/teachregister', function(req, res, next) {
 
 })
 
+router.post("/lock-lecture", function(req, res) {
+if (!req.query.l)
+{
+
+}
+if (req.body.locked == "Unlocked")
+{
+    
+}
+if (req.body.locked == "Locked")
+{
+    
+}
+
+})
+
 router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
     if (!req.query.q) {
@@ -259,17 +275,36 @@ router.post('/teacher-classcreate', function(req, res) {
 
 router.post('/teacher-lecturecreate', function(req, res) {
 
+    utils.lectureCreate(utils.getClassByName(req.query.c));
+    req.flash('success', "Lecture created!")
+    res.redirect(req.get('referer'))
+
+});
+
+router.post('/teacher-lecturecreate', function(req, res) {
+
     utils.lectureCreate(thisclass);
     req.flash('success', "Lecture created!")
     res.redirect(req.get('referer'))
 
 });
 
+router.post('/teacher-questioncreate', function(req, res) {
+
+    utils.lectureCreate(thisclass);
+    req.flash('success', "Lecture created!")
+    res.redirect(req.get('referer'))
+
+});
+
+
+
 router.post('/teacher-studentadd', function(req, res) {
-    if (!req.body.usrname || req.body.className == "") {
+    if (!req.body.usrname || req.body.usrname == "") {
         req.flash('error', "No such student exists")
         res.redirect('/teacherAdmin')
     }
+
     var classes = utils.getAllClasses()
     var err = false;
     for (var key in classes) {

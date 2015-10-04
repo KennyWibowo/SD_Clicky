@@ -11,6 +11,7 @@ var classes = {
         "teacher": "Ms.Smith",
         "pupils": ["Swashbuckler"],
         "lectures": [{
+            "locked": "true",
             "pass": "123abcd",
             "questions": [{
                 "questionName": "Swole",
@@ -122,6 +123,17 @@ module.exports = {
     },
     getAllClasses: function() {
         return classes;
+    },
+    getClassByName: function(className)
+    {
+        for( var key in classes)
+        {
+            if( classes[key].name == className)
+            {
+                return classes[key];
+            }
+        }
+        return null;
     },
     getQuestion: function(questionName) {
         for (var key1 in classes) {
