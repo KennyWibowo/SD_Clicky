@@ -259,11 +259,29 @@ router.post('/teacher-classcreate', function(req, res) {
 
 router.post('/teacher-lecturecreate', function(req, res) {
 
+    utils.lectureCreate(utils.getClassByName(req.query.c));
+    req.flash('success', "Lecture created!")
+    res.redirect(req.get('referer'))
+
+});
+
+router.post('/teacher-lecturecreate', function(req, res) {
+
     utils.lectureCreate(thisclass);
     req.flash('success', "Lecture created!")
     res.redirect(req.get('referer'))
 
 });
+
+router.post('/teacher-questioncreate', function(req, res) {
+
+    utils.lectureCreate(thisclass);
+    req.flash('success', "Lecture created!")
+    res.redirect(req.get('referer'))
+
+});
+
+
 
 router.post('/teacher-studentadd', function(req, res) {
     if (!req.body.usrname || req.body.usrname == "") {
