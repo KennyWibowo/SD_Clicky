@@ -8,7 +8,10 @@ var users = {
         type: "student",
         name: "Black beard",
         email: "pirates4lyfe@yohoho.com",
-        classes: [1]
+        classes: [1],
+        answerHistory: {
+            "Swole" : "b"
+        }
     },
     "Ms.Smith": {
         password: "123",

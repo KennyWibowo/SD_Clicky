@@ -15,11 +15,26 @@ var classes = {
             "questions": [{
                 "questionName": "Swole",
                 "question": "How do you get swole?",
-                "a": "Be Siraj",
-                "b": "Be Joe",
-                "c": "Do nothing",
-                "d": "Really do nothing",
-                "e": "Eat sushi",
+                "a": {
+                    "answer": "Be Siraj",
+                    "studentsAnswered": {}
+                },
+                "b": {
+                    "answer": "Be Joe",
+                    "studentsAnswered": {}
+                },
+                "c": {
+                    "answer": "Be Siraj",
+                    "studentsAnswered": {}
+                },
+                "d": {
+                    "answer": "Be Siraj",
+                    "studentsAnswered": {}
+                },
+                "e": {
+                    "answer": "Be Siraj",
+                    "studentsAnswered": {}
+                },
                 "correct": "b"
             }, {
                 "questionName": "Fav Food",
