@@ -37,7 +37,7 @@ var classes = {
                 },
                 "correct": "b"
             }, {
-                "questionName": "Fav Food",
+                "questionName": "FavFood",
                 "question": "What's your favorite food?",
                 "a": {
                     "answer": "Siraj 's breakfast burrito",
