@@ -1,7 +1,7 @@
 var passport = require("passport")
 var LocalStrategy = require("passport-local").Strategy
 var users = {"Swashbuckler":{password:"5678", id:1, type:"student", name:"Black beard", email:"pirates4lyfe@yohoho.com"},
-"Ms.Smith":{password:"thisisapassword", id:2, type:"teacher", name:"Jenny Smith", email:"iamateacher@yohoho.com"}}
+"Ms.Smith":{password:"thisisapassword", id:2, type:"teacher", name:"Jenny Smith", email:"iamateacher@yohoho.com", pupils:["Swashbuckler"]}}
 var currentid = 3;
 
 //var bcrypt = require('bcrypt')
@@ -53,6 +53,22 @@ module.exports={
 		}
 
 	},
+
+    registerTeacher:function(username, password, email, name, type, pupils, callback)
+    {
+        if(users[username])
+        {
+            var error = new Error("User already exists")
+            return callback(error)
+        }
+        else
+        {
+            users[username]={"password":password, "id":currentid++, "type":type, "name":name, "email":email, "pupils":pupils}
+            console.log(users)
+            return callback(null, username)
+        }
+
+    },
 	
 	ensureUserLoggedIn: function (req, res, next) {
         // not logged in test
@@ -100,24 +116,30 @@ passport.serializeUser(function(user, done) {
 
 function getType(username)
 {
-	return users.username.type
+	return users[username].type
+}
+
+function getName(username)
+{
+    return users[username].name
 }
 
 function getUsersId(id, callback)
 {
-	for (enter in users) {
+	for (enter in users) 
+    {
 
-		if (enter.id = id)
+		if (users[enter].id == id)
 		{
 			callback(users[enter])
 			console.log(users[enter])
 			return enter
 		}
 
-		callback(null);
-		return null
-
 	}
+
+    callback(null)
+    return null
 
 }
 

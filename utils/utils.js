@@ -62,9 +62,47 @@ module.exports = {
          var error = new Error("Pick one of the classes you've already created");
          return callback(error); 
       }
+      if( user.classes[className].lectures[lectureName] )
+      {
+         var error = new Error("You've already created a lecture with that name");
+         return callback(error); 
+      }
       user.classes[className].lectures[lectureName] = {
          "questions": {},
          "lectureTime": lectureTime};
       }
    }
+   questionAdd:function(user, className, lectureName, questionName, question, a, b, c, d, e, answer)
+   {
+      if(!user.classes)
+      {
+         var error = new Error("You need to create a class first.");
+         return callback(error); 
+      }
+      if( !user.classes[className])
+      {
+         var error = new Error("Pick one of the classes you've already created");
+         return callback(error); 
+      }
+      if(!user.classes[className].lectures[lectureName])
+      {
+         var error = new Error("Pick one of the lectures you've already created");
+         return callback(error); 
+      }
+      if(user.classes[className].lectures[lectureName].questions[questionName])
+      {
+         var error = new Error("You've already created a question with this name");
+         return callback(error); 
+      }
+      user.classes[className].lectures[lectureName].questions[questionName] = {
+         "question": question,
+         "a": a,
+         "b": b,
+         "c": c,
+         "d": d,
+         "e": e,
+         "answer": answer};
+      }
+   }
+
 }
