@@ -1,15 +1,9 @@
-<script>
-if()
-
-</script>
-
 <style>
 @media(min-width:768px) {
     body {
         margin-left: 225px;
     }
 }
-
 
 </style>
 
@@ -29,3 +23,28 @@ if()
         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Class 4</a>
     </li>
 </ul>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    <b>{{myclass.name}}</b>
+                </h1>
+                <h4><b>Teacher:</b> {{myclass.teacher}}</h4>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                {{#each myclass.lecture}}
+                    <ul>{{this}}</ul>
+                {{/each}}
+            </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
