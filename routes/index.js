@@ -111,6 +111,22 @@ router.post('/teachregister', function(req, res, next) {
 
 })
 
+router.post("/lock-lecture", function(req, res) {
+if (!req.query.l)
+{
+
+}
+if (req.body.locked == "Unlocked")
+{
+    
+}
+if (req.body.locked == "Locked")
+{
+    
+}
+
+})
+
 router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
     if (!req.query.q) {

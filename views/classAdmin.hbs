@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
 <style>
 @media(min-width:768px) {
     body {
@@ -32,24 +31,31 @@
         </form>
         <div id="accordion">
             {{#each myclass.lectures}}
-                <h3 id="{{@index}}"><b>Lecture {{addone @index}}</b></h3>
-                <div>
-                    <p>
-                        {{#each this.questions}}
-                            <a href='/studentInput?q={{this.questionName}}'>{{addone @index}}. {{this.question}}</a><br>
-                        {{/each}}
-
-                        <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
-                            </div>
-                        </form>
-                    </p>
-                </div>
-            {{/each}}
+            <h3 id="{{@index}}"><b>Lecture {{addone @index}}</b></h3>
+            <div>
+                <p>
+                    {{#each this.questions}}
+                    <a href='/studentInput?q={{this.questionName}}'>{{addone @index}}. {{this.question}}</a>
+                    <br> {{/each}}
+                    <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
+                        </div>
+                    </form>
+                    <form id="form-locking" action="/lock-lecture?l={{@index}}" method="post">
+                        <div id="submitUnlock">
+                            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock" name="locked">
+                        </div>
+                        <div id="submitLock">
+                            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Lock" name="locked">
+                        </div>
+                    </form>
+            </div>
+            </p>
         </div>
-
-        <!-- <div id="acdnmenu">
+        {{/each}}
+    </div>
+    <!-- <div id="acdnmenu">
             <ul>
                 {{#each myclass.lectures}}
                 <li><b>Lecture {{addone @index}}</b>
@@ -67,28 +73,10 @@
                 {{/each}}
             </ul>
         </div> -->
-        <div id="submit">
-            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock">
-        </div>
-        <div id="submit">
-            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Lock">
-        </div>
-        <div class="form-group">
-            <label>Selects</label>
-            <select class="form-control">
-                {{#each myclass.lectures}}
-                <option>Lecture {{addone @index}}</option>
-                {{/each}}
-            </select>
-        </div>
-    </div>
     <!-- /.container-fluid -->
 </div>
-
 <script>
-
 $(function() {
-    $( "#accordion" ).accordion();
+    $("#accordion").accordion();
 });
-
 </script>

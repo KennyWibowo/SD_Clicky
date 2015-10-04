@@ -11,6 +11,7 @@ var classes = {
         "teacher": "Ms.Smith",
         "pupils": ["Swashbuckler"],
         "lectures": [{
+            "locked": "true",
             "pass": "123abcd",
             "questions": [{
                 "questionName": "Swole",
