@@ -117,26 +117,30 @@ router.post('/teachregister', function(req, res, next) {
 
 })
 
-router.get('/studentInput', function(req, res) {
+router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
+
+    if(!req.query.q) {
+        req.flash('error', "Wrong Query!");
+    }
+
+    if(!utils.getClass(req.query.q)) {
+        req.flash('error', "Bad Class!");
+    }     
+
+
+    console.log("q is set to " + req.query.q);
+
     res.render('studentInput', {
         user: req.user,
+        myclass: utils.getClass(req.query.q),
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),
         success: req.flash('success')
     });
 });
-router.post('/studentInput', function(req, res) {
-    console.dir(req.body);
-    if(!req.query.c) {
-        req.flash('error'),
-        res.redirect('/')
-    }
 
-    if(!utils.getClass(req.query.c)) {
-        req.flash('error'),
-        res.redirect('/')
-    } 
+router.post('/studentInput',  function(req, res) {
 
     if (req.body.choice) {
 
@@ -146,16 +150,6 @@ router.post('/studentInput', function(req, res) {
         req.flash('error', "Please pick an answer");
         res.redirect('/studentInput');
     }
-
-    console.log("c is set to " + req.query.c);
-    res.render('classPage', {
-        user: req.user,
-        myclass: utils.getClass(req.query.c),
-        error: req.flash('error'),
-        warning: req.flash('warning'),
-        info: req.flash('info'),
-        success: req.flash('success')
-    })
 
 });
 
@@ -206,12 +200,12 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
 
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
     if (!req.query.c) {
-        req.flash('error'),
+        req.flash('error', "No such query!"),
             res.redirect('/')
     }
 
     if (!utils.getClass(req.query.c)) {
-        req.flash('error'),
+        req.flash('error', "Incorrect class!"),
             res.redirect('/')
     }
 
