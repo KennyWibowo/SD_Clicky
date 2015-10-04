@@ -10,23 +10,20 @@ var classes = {
         "name": "Biology",
         "teacher": "Ms.Smith",
         "pupils": ["Swashbuckler"],
-        "lectures": {
-            1: {
-                "time": "MWF 1-2PM",
-                "questions": {
-                    1: {
-                        "question": "How do you get swole?",
-                        "a": "Be Siraj",
-                        "b": "Be Joe",
-                        "c": "Do nothing",
-                        "d": "Really do nothing",
-                        "e": "Eat sushi",
-                        "correct": "b"
-                    }
-                }
-            }
-        }
+        "lectures": [{
+            "time": "MWF 1-2PM",
+            "questions": [{
+                "question": "How do you get swole?",
+                "a": "Be Siraj",
+                "b": "Be Joe",
+                "c": "Do nothing",
+                "d": "Really do nothing",
+                "e": "Eat sushi",
+                "correct": "b"
+            }]
+        }]
     }
+}
 }
 
 var nextClassNumber = 2;
@@ -36,7 +33,7 @@ module.exports = {
         classes[nextClassNumber++] = {
             "name": name,
             "teacher": teacher,
-            "pupils" : [],
+            "pupils": [],
             "lectures": {}
         }
     },
@@ -105,11 +102,11 @@ module.exports = {
 
 
     },
-    getClass: function( classID ){
-      return classes[classID];
-          },
+    getClass: function(classID) {
+        return classes[classID];
+    },
     lectureCreate: function(classID, lectureName, lectureTime) {
-        if (!classes[classID] ) {
+        if (!classes[classID]) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
@@ -123,7 +120,7 @@ module.exports = {
         }
     },
     questionAdd: function(user, className, lectureName, questionName, question, a, b, c, d, e, answer) {
-        if (!classes[classID] ) {
+        if (!classes[classID]) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
