@@ -63,6 +63,7 @@ var classes = {
                 "correct": "a"
             }]
         }, {
+            "locked": "true",
             "pass": "456efgh",
             "questions": [{
                 "questionName": "OddOneOut",
@@ -152,6 +153,7 @@ module.exports = {
     },
     lectureCreate: function(class1) {
         class1.lectures.push({
+            "locked": "true",
             "questions": [],
             "pass": randomGenerator(8)
         });

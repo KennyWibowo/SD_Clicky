@@ -112,18 +112,32 @@ router.post('/teachregister', function(req, res, next) {
 })
 
 router.post("/lock-lecture", function(req, res) {
-if (!req.query.l)
-{
+    if (!req.query.l) {
+        req.flash('error', "Get outta hea");
+        res.redirect(req.get('referer'));
+    }
+    if (!req.query.c) {
+        req.flash('error', "Get outta hea");
+        res.redirect(req.get('referer'));
+    }
 
-}
-if (req.body.locked == "Unlocked")
-{
+    var myclass = utils.getClassByName(req.query.c);
     
-}
-if (req.body.locked == "Locked")
-{
-    
-}
+    if(!myclass) {
+        req.flash('error', "You have no class");
+        res.redirect(req.get('referer'));
+    }
+
+    var mylect = myclass.lectures[req.query.l];
+
+    if(!myclass) {
+        req.flash('error', "You have no lecture");
+        res.redirect(req.get('referer'));
+    }
+
+    var truetest = req.body.locked == "Locked" ? true : false;
+
+    mylect.locked = truetest;
 
 })
 
@@ -168,7 +182,7 @@ router.post('/studentInput', function(req, res) {
             question[prevAns].studentAnswered[req.user.usrname] = false;
             prevAns = req.body.choice;
             console.dir(question);
-        } else if(!prevAns) {
+        } else if (!prevAns) {
             var question = utils.getQuestion(req.body.urlquery);
             question[req.body.choice].studentAnswered[req.user.usrname] = true;
             prevAns = req.body.choice;
