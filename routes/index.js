@@ -120,11 +120,11 @@ router.post('/teachregister', function(req, res, next) {
 router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
     if(!req.query.q) {
-        req.flash('error', "Wrong Query!");
+        req.flash('error', "Wrong Query");
     }
 
     if(!utils.getQuestion(req.query.q)) {
-        req.flash('error', "No Such Class!");
+        req.flash('error', "No Such Class");
     }     
 
 
@@ -144,9 +144,11 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
 router.post('/studentInput',  function(req, res) {
 
+    console.dir('Answer chosen is: ' + req.body.choice);
+
     if (req.body.choice) {
 
-        req.flash('success', "Submitted!");
+        req.flash('success', "Submitted");
         res.redirect('/studentInput?q=' + req.body.urlquery);
     } else {
         req.flash('error', "Please pick an answer");
