@@ -194,9 +194,20 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
 })
 
 router.get('/questionGraph', function(req, res) {
+    if (!req.query.q) {
+        req.flash('error', "Wrong Query");
+    }
+
+    if (!utils.getQuestion(req.query.q)) {
+        req.flash('error', "No Such Class");
+    }
+
+    console.log("q is set to " + req.query.q);
+
     res.render('questionGraph', {
         classes: getClassesOfUser(req.user),
         user: req.user,
+        yVal: JSON.stringify(utils.createGraphData(req.query.q)),
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),

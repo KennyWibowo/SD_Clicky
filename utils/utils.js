@@ -80,7 +80,7 @@ var classes = {
                 },
                 "d": {
                     "answer": "Sun Chips",
-                    "studentAnswered": {""}
+                    "studentAnswered": {}
                 },
                 "e": {
                     "answer": "Apples",
@@ -184,16 +184,33 @@ module.exports = {
                 }
             }
         }
-        return [
-            Object.keys(question.a.studentsAnswered).length,
+        var toRet = [
+            countingTrueKeys(currQ.a.studentAnswered), 
 
-            Object.keys(question.b.studentsAnswered).length,
+            countingTrueKeys(currQ.b.studentAnswered),
 
-            Object.keys(question.c.studentsAnswered).length,
+            countingTrueKeys(currQ.c.studentAnswered),
 
-            Object.keys(question.d.studentsAnswered).length,
+            countingTrueKeys(currQ.d.studentAnswered),
 
-            Object.keys(question.e.studentsAnswered).length
+            countingTrueKeys(currQ.e.studentAnswered)
         ];
+
+        console.dir(toRet);
+
+        return toRet;
     }
+}
+
+var countingTrueKeys = function(answers) {
+    var count = 0
+    for (var key1 in answers) {
+
+        var bolval = answers[key1];
+        if (bolval == true) {
+            count++;
+        }
+    }
+
+    return count;
 }

@@ -1,11 +1,11 @@
 <div id="mychart" class="form-signin panel panel-default clearfix signin-panel" style="width:650px;height:450px;"></div>
-
+<input id="yVal" type="text" value="{{yVal}}">
 {{> teachersidebar}}
 
 <script type="text/javascript">
-	function barchart(divid) {
-	    var x = ['Bears', 'Lions', 'Tigers', 'Giraffes', 'Zebras'],
-	        y = [1000, 800, 600, 400, 100];
+	function barchart(divid, yVals) {
+	    var x = ['A', 'B', 'C', 'D', 'E'],
+	        y = yVals;
 
 	    Plotly.plot(divid, [{
 	        x: x,
@@ -19,6 +19,9 @@
 
 	var mychart = document.getElementById("mychart");
 
-	barchart(mychart);
+	var yvals = JSON.parse(document.getElementById("yVal").value);
+
+	console.log(yvals)
+	barchart(mychart, yvals);
 	
 </script>
