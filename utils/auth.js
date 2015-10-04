@@ -3,14 +3,14 @@ var passport = require("passport")
 var LocalStrategy = require("passport-local").Strategy
 var users = {
     "Swashbuckler": {
-        password: "5678",
+        password: "123",
         id: 1,
         type: "student",
         name: "Black beard",
         email: "pirates4lyfe@yohoho.com"
     },
     "Ms.Smith": {
-        password: "thisisapassword",
+        password: "123",
         id: 2,
         type: "teacher",
         name: "Jenny Smith",
