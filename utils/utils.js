@@ -26,8 +26,12 @@ var classes = {
         }
     }
 }
-
+var nextClassNumber = 2;
 module.exports = {
+   createClass:function(name, teacher)
+   {
+     classes[nextClassNumber++] = {"name": name, "teacher": teacher, ""}
+   }
    randomGenerator: function( passLength)
    {
 
@@ -41,7 +45,7 @@ module.exports = {
       return classPass;
 
    }
-   classCreate:function( className, classSize, lectureTimes, user, callback)
+   addClass:function( className, classSize, lectureTimes, user, callback)
    {
       if(user.type != "teacher")
       {
