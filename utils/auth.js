@@ -1,3 +1,4 @@
+var utils = require('./utils');
 var passport = require("passport")
 var LocalStrategy = require("passport-local").Strategy
 var users = {
@@ -14,7 +15,7 @@ var users = {
         type: "teacher",
         name: "Jenny Smith",
         email: "iamateacher@yohoho.com",
-        classes: [1]
+        classes: [utils.getClass[1]]
     }
 }
 var currentid = 3;
