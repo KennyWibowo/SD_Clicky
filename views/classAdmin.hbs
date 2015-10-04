@@ -1,20 +1,15 @@
 <link href="/stylesheets/accordionmenu.css" rel="stylesheet" type="text/css" />
 <script src="/js/lib/accordionmenu.js" type="text/javascript"></script>
-
 <style>
 @media(min-width:768px) {
     body {
         margin-left: 225px;
     }
 }
-
 </style>
-
 {{> teachersidebar}}
-
 <div id="page-wrapper">
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
@@ -25,62 +20,46 @@
             </div>
         </div>
         <!-- /.row -->
-
-<form id="form-createlectture" action="/teacher-lecturecreate" method="post">
-
-                    <div class="form-group">
-                        <label>Create a new lecture</label>
-                        <div id="submit">
-                            <input type="submit" class="btn btn-default" id="btn-login" value="Create">
-                        </div>
-                    </div>
-
-
-                </form>
-    <div id="acdnmenu">
-        <ul>
-            {{#each myclass.lectures}}
+        <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+            <div class="form-group">
+                <label>Create a new lecture</label>
+                <div id="submit">
+                    <input type="submit" class="btn btn-default" id="btn-login" value="Create">
+                </div>
+            </div>
+        </form>
+        <div id="acdnmenu">
+            <ul>
+                {{#each myclass.lectures}}
                 <li><b>Lecture {{addone @index}}</b>
                     <ul style="background:transparent url(2.jpg) no-repeat 160px bottom;">
-                    {{#each this.questions}}
+                        {{#each this.questions}}
                         <li><a href='/questionGraph?q={{this.questionName}}'>{{this.question}}</a></li>
-                    {{/each}}
-                    <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
-                    <div class="form-group">
-                    <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
-                    </div>
-                    </form>
+                        {{/each}}
+                        <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default" id="btn-login" value="Create a Question">
+                            </div>
+                        </form>
                     </ul>
                 </li>
-            {{/each}}
-        </ul>
+                {{/each}}
+            </ul>
+        </div>
+        <div id="submit">
+            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock">
+        </div>
+        <div id="submit">
+            <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Lock">
+        </div>
+        <div class="form-group">
+            <label>Selects</label>
+            <select class="form-control">
+                {{#each myclass.lectures}}
+                <option>Lecture {{addone @index}}</option>
+                {{/each}}
+            </select>
+        </div>
     </div>
-
-
-
-    <div id="submit">
-        <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Unlock">
-    </div>
-    <div id="submit">
-        <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Lock">
-    </div>
-    <div class="form-group">
-        <label>Selects</label>
-        <select class="form-control">
-        {{#each myclass.lectures}}
-        <option>Lecture {{addone @index}}</option>
-        {{/each}}
-        </select>
-    </div>
-    
-
-    
-      
-
-</div>
     <!-- /.container-fluid -->
-
 </div>
-
-
-
