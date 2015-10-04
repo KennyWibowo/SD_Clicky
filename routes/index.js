@@ -207,14 +207,14 @@ router.post('/teacher-classcreate', function(req, res) {
     }
     var classes = utils.getAllClasses()
     for (var key in classes) {
-        if (className == classes[key].name) {
+        if (req.body.className == classes[key].name) {
             req.flash('error', "Class already exists")
             res.redirect('/teacherAdmin')
         }
     }
 
-    
-    req.flash('error', "Class already exists")
+    utils.createClass(req.body.className, req.user);
+    req.flash('success', "Class created!")
     res.redirect('/teacherAdmin')
 
 });

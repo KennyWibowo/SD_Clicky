@@ -107,12 +107,15 @@ var randomGenerator = function(passLength) {
 
 module.exports = {
     createClass: function(name, teacher) {
-        classes[nextClassNumber++] = {
+        classes[nextClassNumber] = {
             "name": name,
-            "teacher": teacher,
-            "pupils": [],
-            "lectures": {}
+            "teacher": teacher.name,
+            "lectures": []
         }
+
+        teacher.classes.push(nextClassNumber);
+
+        nextClassNumber++;
     },
     getClass: function(classID) {
         return classes[classID];
