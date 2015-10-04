@@ -35,7 +35,7 @@
             <div>
                 <p>
                     {{#each this.questions}}
-                    <a href='/studentInput?q={{this.questionName}}'>{{addone @index}}. {{this.question}}</a>
+                    <a href='/questionGraph?q={{this.questionName}}'>{{addone @index}}. {{this.question}}</a>
                     <br> {{/each}}
                     <form id="form-createlectture" action="/teacher-lecturecreate" method="post">
                         <div class="form-group">
