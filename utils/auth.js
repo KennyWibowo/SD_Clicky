@@ -51,25 +51,7 @@ passport.use(new LocalStrategy({
 )
 
 module.exports = {
-    registerUser: function(username, password, email, name, type, callback) {
-        if (users[username]) {
-            var error = new Error("User already exists")
-            return callback(error)
-        } else {
-            users[username] = {
-                "password": password,
-                "id": currentid++,
-                "type": type,
-                "name": name,
-                "email": email
-            }
-            console.log(users)
-            return callback(null, username)
-        }
-
-    },
-
-    registerTeacher: function(username, password, email, name, type, pupils, callback) {
+    registerUser: function(username, password, email, name, type, classes, callback) {
         if (users[username]) {
             var error = new Error("User already exists")
             return callback(error)
@@ -80,7 +62,27 @@ module.exports = {
                 "type": type,
                 "name": name,
                 "email": email,
-                "pupils": pupils
+                "classes": classes
+            }
+            console.log(users)
+            return callback(null, username)
+        }
+
+    },
+
+    registerTeacher: function(username, password, email, name, type, pupils, classes, callback) {
+        if (users[username]) {
+            var error = new Error("User already exists")
+            return callback(error)
+        } else {
+            users[username] = {
+                "password": password,
+                "id": currentid++,
+                "type": type,
+                "name": name,
+                "email": email,
+                "pupils": pupils,
+                "classes": classes
             }
             console.log(users)
             return callback(null, username)

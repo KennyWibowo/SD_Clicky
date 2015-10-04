@@ -64,7 +64,7 @@ router.post('/register', function(req, res, next) {
             req.flash('error', "Your passwords don't match ")
             res.redirect('/register')
         } else {
-            auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, "student",
+            auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, "student", {},
                 function(err, user) {
                     if (err) {
                         req.flash('error', err.message)
@@ -98,7 +98,7 @@ router.post('/teachregister', function(req, res, next) {
             req.flash('error', "Your passwords don't match ")
             res.redirect('/teachregister')
         } else {
-            auth.registerTeacher(req.body.username, req.body.password, req.body.email, req.body.name, "teacher", {},
+            auth.registerTeacher(req.body.username, req.body.password, req.body.email, req.body.name, "teacher", {}, {},
                 function(err, user) {
                     if (err) {
                         req.flash('error', err.message)
