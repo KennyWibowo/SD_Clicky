@@ -119,13 +119,13 @@ router.post('/teachregister', function(req, res, next) {
 
 router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
 
-    if(!req.query.q) {
+    if (!req.query.q) {
         req.flash('error', "Wrong Query");
     }
 
-    if(!utils.getQuestion(req.query.q)) {
+    if (!utils.getQuestion(req.query.q)) {
         req.flash('error', "No Such Class");
-    }     
+    }
 
 
     console.log("q is set to " + req.query.q);
@@ -142,7 +142,7 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
     });
 });
 
-router.post('/studentInput',  function(req, res) {
+router.post('/studentInput', function(req, res) {
 
     console.dir('Answer chosen is: ' + req.body.choice);
 
@@ -158,13 +158,11 @@ router.post('/studentInput',  function(req, res) {
 });
 
 router.get("/classAdmin", auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, function(req, res) {
-    if(!req.query.c)
-    {
+    if (!req.query.c) {
         req.flash('error', 'Incorrect class page')
         res.redirect('/')
     }
-    if( !utils.getClass(req.query.c))
-    {
+    if (!utils.getClass(req.query.c)) {
         req.flash('error', 'Incorrect class page')
         res.redirect('/')
     }
@@ -202,22 +200,20 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
     })
 })
 
-router.post( '/teacher-classcreate', function( req, res){
-    if(!req.body.className || req.body.className == "")
-    {
+router.post('/teacher-classcreate', function(req, res) {
+    if (!req.body.className || req.body.className == "") {
         req.flash('error', "Must Enter a Class name")
         res.redirect('/teacherAdmin')
     }
     var classes = utils.getAllClasses()
-    for( var key in classes)
-    {
-        if(className == classes[key].name){
+    for (var key in classes) {
+        if (className == classes[key].name) {
             req.flash('error', "Class already exists")
-        res.redirect('/teacherAdmin')
+            res.redirect('/teacherAdmin')
         }
     }
 
-}
+});
 
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
     if (!req.query.c) {
@@ -256,7 +252,7 @@ function getClassesOfUser(user) {
 
     var allClasses = utils.getAllClasses();
 
-    for(var i = 0; i<user.classes.length; i++) {
+    for (var i = 0; i < user.classes.length; i++) {
         var key = user.classes[i];
         classes[key] = allClasses[key];
     }
