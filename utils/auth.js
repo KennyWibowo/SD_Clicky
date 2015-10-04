@@ -84,6 +84,7 @@ module.exports={
 
     ensureUserIsTeacher:function(req, res, next)
     {
+        console.log("hi")
     	if(req.user && req.user.type == "teacher")
     	{
     		next();
@@ -91,7 +92,7 @@ module.exports={
     	else
     	{
     		req.flash('error', "You must be logged in as a teacher to continue");
-            res.redirect('/login');
+            res.redirect('/');
     	}
     },
 
@@ -105,7 +106,7 @@ module.exports={
     	else
     	{
     		req.flash('error', "You must be logged in as a student to continue");
-            res.redirect('/login');
+            res.redirect('/');
     	}
     }
 }
