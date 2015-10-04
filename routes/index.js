@@ -128,6 +128,16 @@ router.get('/studentInput', function(req, res) {
 });
 router.post('/studentInput', function(req, res) {
     console.dir(req.body);
+    if(!req.query.c) {
+        req.flash('error'),
+        res.redirect('/')
+    }
+
+    if(!utils.getClass(req.query.c)) {
+        req.flash('error'),
+        res.redirect('/')
+    } 
+
     if (req.body.choice) {
 
         req.flash('success', "Submitted!");
@@ -136,6 +146,16 @@ router.post('/studentInput', function(req, res) {
         req.flash('error', "Please pick an answer");
         res.redirect('/studentInput');
     }
+
+    console.log("c is set to " + req.query.c);
+    res.render('classPage', {
+        user: req.user,
+        myclass: utils.getClass(req.query.c),
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    })
 
 });
 
