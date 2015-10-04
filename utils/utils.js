@@ -17,23 +17,23 @@ var classes = {
                 "question": "How do you get swole?",
                 "a": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentAnswered": {}
                 },
                 "b": {
                     "answer": "Be Joe",
-                    "studentsAnswered": {}
+                    "studentAnswered": {}
                 },
                 "c": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentAnswered": {}
                 },
                 "d": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentAnswered": {}
                 },
                 "e": {
                     "answer": "Be Siraj",
-                    "studentsAnswered": {}
+                    "studentAnswered": {}
                 },
                 "correct": "b"
             }, {

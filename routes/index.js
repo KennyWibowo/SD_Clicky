@@ -147,13 +147,13 @@ router.post('/studentInput', function(req, res) {
 
         if (prevAns && prevAns != req.body.choice) {
             var question = utils.getQuestion(req.body.urlquery);
-            question[req.body.choice].studentsAnswered[req.user.usrname] = true;
-            question[prevAns].studentsAnswered[req.user.usrname] = false;
+            question[req.body.choice].studentAnswered[req.user.usrname] = true;
+            question[prevAns].studentAnswered[req.user.usrname] = false;
             prevAns = req.body.choice;
             console.dir(question);
         } else if(!prevAns) {
             var question = utils.getQuestion(req.body.urlquery);
-            question[req.body.choice].studentsAnswered[req.user.usrname] = true;
+            question[req.body.choice].studentAnswered[req.user.usrname] = true;
             prevAns = req.body.choice;
             console.dir(question);
         }
