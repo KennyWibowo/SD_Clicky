@@ -11,8 +11,9 @@ var classes = {
         "teacher": "Ms.Smith",
         "pupils": ["Swashbuckler"],
         "lectures": [{
-            "time": "MWF 1-2PM",
+            "pass": "123abcd",
             "questions": [{
+                "questionName": "Swole",
                 "question": "How do you get swole?",
                 "a": "Be Siraj",
                 "b": "Be Joe",
@@ -26,17 +27,7 @@ var classes = {
 }
 
 var nextClassNumber = 2;
-
-module.exports = {
-    createClass: function(name, teacher) {
-        classes[nextClassNumber++] = {
-            "name": name,
-            "teacher": teacher,
-            "pupils": [],
-            "lectures": {}
-        }
-    },
-    randomGenerator: function(passLength) {
+var randomGenerator = function(passLength) {
 
         var classPass = "";
 
@@ -46,32 +37,16 @@ module.exports = {
 
         return classPass;
 
-    },
-    classCreate: function(className, classSize, lectureTimes, user, callback) {
-        if (user.type != "teacher") {
-            var error = new Error("Sorry, only teachers can create classes.");
-            return callback(error);
+    }
+
+module.exports = {
+    createClass: function(name, teacher) {
+        classes[nextClassNumber++] = {
+            "name": name,
+            "teacher": teacher,
+            "pupils": [],
+            "lectures": {}
         }
-        if (!user.classes) {
-            user.classes = {};
-        }
-        if (!user.classes[className]) {
-            var error = new Error("Sorry, a class with this name has already been created.");
-            return callback(error);
-        }
-        if (classSize < 1) {
-            var error = new Error("You need at least one student in your class.");
-            return callback(error);
-        }
-        if (lectureNumber < 1) {
-            var error = new Error("You need at least one lecture in your class.");
-            return callback(error);
-        }
-        user.classes[className] = {
-            "classSize": classSize,
-            "lectures": {},
-            "lectureTimes": lectureTimes
-        };
     },
     addClass: function(className, classSize, lectureTimes, user, callback) {
         if (user.type != "teacher") {
@@ -95,7 +70,7 @@ module.exports = {
         }
         user.classes[className] = {
             "classSize": classSize,
-            "lectures": {},
+            "lectures": [],
             "lectureTimes": lectureTimes
         };
 
@@ -104,34 +79,30 @@ module.exports = {
     getClass: function(classID) {
         return classes[classID];
     },
+    getAllClasses: function(){
+        return classes;
+    },
     lectureCreate: function(classID, lectureName, lectureTime) {
         if (!classes[classID]) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
-        if (classes[classID].lectures[lectureName]) {
-            var error = new Error("You've already created a lecture with that name");
-            return callback(error);
-        }
-        classes[className].lectures[lectureName] = {
-            "questions": {},
-            "time": lectureTime
-        }
+        classes[className].lectures.push({
+            "questions": [],
+            "pass": randomGenerator(8)
+        });
     },
-    questionAdd: function(user, className, lectureName, questionName, question, a, b, c, d, e, answer) {
+    questionAdd: function(user, className, lectureNumber, questionName, question, a, b, c, d, e, answer) {
         if (!classes[classID]) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
-        if (!classes[classID].lectures[lectureName]) {
+        if (!classes[classID].lectures[lectureNumber]) {
             var error = new Error("Pick one of the lectures you've already created");
             return callback(error);
         }
-        if (classes[classID].lectures[lectureName].questions[questionName]) {
-            var error = new Error("You've already created a question with this name");
-            return callback(error);
-        }
-        classes[classID].lectures[lectureName].questions[questionName] = {
+        classes[classID].lectures[lectureNumber].questions.push({
+            "questionName": questionName,
             "question": question,
             "a": a,
             "b": b,
@@ -139,6 +110,6 @@ module.exports = {
             "d": d,
             "e": e,
             "correct": answer
-        };
+        });
     }
 }
