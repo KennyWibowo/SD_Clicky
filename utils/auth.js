@@ -8,17 +8,15 @@ var users = {
         type: "student",
         name: "Black beard",
         email: "pirates4lyfe@yohoho.com",
-        classes: [1],
-        usrname: "Swashbuckler"
+        classes: [1]
     },
     "Ms.Smith": {
         password: "123",
         id: 2,
         type: "teacher",
-        name: "Jenny Smith",
+        name: "Jenny Smith", 
         email: "iamateacher@yohoho.com",
-        classes: [1],
-        usrname: "Ms.Smith"
+        classes: [1]
     }
 }
 var currentid = 3;
@@ -53,7 +51,7 @@ passport.use(new LocalStrategy({
 )
 
 module.exports = {
-    registerUser: function(username, password, email, name, type, classes, usrname, callback) {
+    registerUser: function(username, password, email, name, type, classes, callback) {
         if (users[username]) {
             var error = new Error("User already exists")
             return callback(error)
@@ -64,8 +62,7 @@ module.exports = {
                 "type": type,
                 "name": name,
                 "email": email,
-                "classes": classes,
-                "usrname": usrname
+                "classes": classes
             }
             console.log(users)
             return callback(null, username)
@@ -73,7 +70,7 @@ module.exports = {
 
     },
 
-    registerTeacher: function(username, password, email, name, type, pupils, classes, usrname, callback) {
+    registerTeacher: function(username, password, email, name, type, pupils, classes, callback) {
         if (users[username]) {
             var error = new Error("User already exists")
             return callback(error)
@@ -85,8 +82,7 @@ module.exports = {
                 "name": name,
                 "email": email,
                 "pupils": pupils,
-                "classes": classes,
-                "usrname": usrname
+                "classes": classes
             }
             console.log(users)
             return callback(null, username)
@@ -123,6 +119,8 @@ module.exports = {
             res.redirect('/');
         }
     }
+
+    
 }
 
 passport.serializeUser(function(user, done) {
