@@ -24,7 +24,6 @@ var classes = {
         }]
     }
 }
-}
 
 var nextClassNumber = 2;
 
