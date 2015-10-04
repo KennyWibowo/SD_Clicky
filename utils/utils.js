@@ -3,6 +3,30 @@ var  symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8",
                             "h", "i", "j", "k", "l", "m", "n", "o",
                             "p", "q", "r", "s", "t", "u", "v,", "w",
                             "x", "y", "z"]
+
+var classes = {
+    1: {
+        "name": "Biology",
+        "teacher": "Ms.Smith",
+        "pupils": ["Swashbuckler"],
+        "lectures": {
+            1: {
+                "questions" {
+                  1: {
+                     "question": "How do you get swole?",
+                     "a": "Be Siraj",
+                     "b": "Be Joe",
+                     "c": "Do nothing",
+                     "d": "Really do nothing",
+                     "e": "Eat sushi"
+                     "correct": "b"
+                  }
+                }
+            }
+        }
+    }
+}
+
 module.exports = {
    randomGenerator: function( passLength)
    {
