@@ -13,7 +13,16 @@ router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
         warning: req.flash('warning'),
         info: req.flash('info'),
         success: req.flash('success')
-    });
+    }
+    );
+    if (req.user.type == "student")
+    {
+        res.redirect('/studentProfile')
+    }
+    else if (req.user.type == "teacher")
+    {
+        res.redirect('/teacherAdmin')
+    }
 });
 
 router.get('/login', function(req, res) {
@@ -59,7 +68,7 @@ router.post('/register', function(req, res, next) {
             req.flash('error', "Your passwords don't match ")
             res.redirect('/register')
         } else {
-            auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, req.body.type,
+            auth.registerUser(req.body.username, req.body.password, req.body.email, req.body.name, "student",
                 function(err, user) {
                     if (err) {
                         req.flash('error', err.message)
@@ -77,6 +86,40 @@ router.post('/register', function(req, res, next) {
     }
 
 });
+
+router.get('/teachregister', function(req, res) {
+    res.render('teachregister', {
+        user: req.user,
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    });
+})
+router.post('/teachregister', function(req, res, next) {
+    if (req.body.username && req.body.name && req.body.email && req.body.password && req.body.password_conf) {
+        if (req.body.password != req.body.password_conf) {
+            req.flash('error', "Your passwords don't match ")
+            res.redirect('/teachregister')
+        } else {
+            auth.registerTeacher(req.body.username, req.body.password, req.body.email, req.body.name, "teacher", {},
+                function(err, user) {
+                    if (err) {
+                        req.flash('error', err.message)
+                        res.redirect('/teachregister')
+                    } else {
+                        req.flash('success', "Account " + req.body.username + " sucessfully created")
+                        res.redirect('/login')
+                    }
+
+                })
+        }
+    } else {
+        req.flash('error', "Please have an input for all of the entry boxes")
+        res.redirect('/teachregister')
+    }
+
+})
 
 router.get('/studentInput', function(req, res) {
     res.render('studentInput', {
