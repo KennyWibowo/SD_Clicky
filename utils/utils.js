@@ -68,19 +68,19 @@ var classes = {
                 "question": "What food was not present at SDHacks?",
                 "a": {
                     "answer": "Pizza",
-                    "studentAnswered": {}
+                    "studentAnswered": {"Bob": true, "Joe": true, "Rich": true, "Ken": true, "Dan": true}
                 },
                 "b": {
                     "answer": "Boba",
-                    "studentAnswered": {}
+                    "studentAnswered": {"May": true, "Misty": true, "Dawn": true}
                 },
                 "c": {
                     "answer": "Spaghetti",
-                    "studentAnswered": {}
+                    "studentAnswered": {"Brock": true}
                 },
                 "d": {
                     "answer": "Sun Chips",
-                    "studentAnswered": {}
+                    "studentAnswered": {""}
                 },
                 "e": {
                     "answer": "Apples",
@@ -167,5 +167,33 @@ module.exports = {
             "e": e,
             "correct": answer
         });
+    },
+    createGraphData: function(questionName) {
+        var currQ;
+
+        for (var key1 in classes) {
+            var thisclass = classes[key1];
+            for (var key2 in thisclass.lectures) {
+                var lecture = thisclass.lectures[key2];
+                for (var key3 in lecture.questions) {
+                    var question = lecture.questions[key3];
+                    if (question.questionName == questionName) {
+                        currQ = question;
+                        break;
+                    }
+                }
+            }
+        }
+        return [
+            Object.keys(question.a.studentsAnswered).length,
+
+            Object.keys(question.b.studentsAnswered).length,
+
+            Object.keys(question.c.studentsAnswered).length,
+
+            Object.keys(question.d.studentsAnswered).length,
+
+            Object.keys(question.e.studentsAnswered).length
+        ];
     }
 }
