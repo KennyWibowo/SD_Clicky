@@ -12,7 +12,7 @@ var classes = {
         "pupils": ["Swashbuckler"],
         "lectures": {
             1: {
-                "time": "MWF 1-2PM"
+                "time": "MWF 1-2PM",
                 "questions": {
                     1: {
                         "question": "How do you get swole?",
