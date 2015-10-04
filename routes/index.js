@@ -123,8 +123,8 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
         req.flash('error', "Wrong Query!");
     }
 
-    if(!utils.getClass(req.query.q)) {
-        req.flash('error', "Bad Class!");
+    if(!utils.getQuestion(req.query.q)) {
+        req.flash('error', "No Such Class!");
     }     
 
 
@@ -133,6 +133,7 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
     res.render('studentInput', {
         user: req.user,
         myclass: utils.getClass(req.query.q),
+        query: req.query.q,
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),
@@ -145,10 +146,10 @@ router.post('/studentInput',  function(req, res) {
     if (req.body.choice) {
 
         req.flash('success', "Submitted!");
-        res.redirect('/studentInput');
+        res.redirect('/studentProfile');
     } else {
         req.flash('error', "Please pick an answer");
-        res.redirect('/studentInput');
+        res.redirect('/studentInput?q=' + req.body.urlquery);
     }
 
 });
