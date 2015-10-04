@@ -14,7 +14,7 @@ var users = {
         type: "teacher",
         name: "Jenny Smith",
         email: "iamateacher@yohoho.com",
-        pupils: ["Swashbuckler"]
+        classes: [1]
     }
 }
 var currentid = 3;
