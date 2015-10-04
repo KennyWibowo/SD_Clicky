@@ -7,7 +7,8 @@ var users = {
         id: 1,
         type: "student",
         name: "Black beard",
-        email: "pirates4lyfe@yohoho.com"
+        email: "pirates4lyfe@yohoho.com",
+        classes: [1]
     },
     "Ms.Smith": {
         password: "123",

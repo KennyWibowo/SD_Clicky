@@ -13,14 +13,10 @@ router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
         warning: req.flash('warning'),
         info: req.flash('info'),
         success: req.flash('success')
-    }
-    );
-    if (req.user.type == "student")
-    {
+    });
+    if (req.user.type == "student") {
         res.redirect('/studentProfile')
-    }
-    else if (req.user.type == "teacher")
-    {
+    } else if (req.user.type == "teacher") {
         res.redirect('/teacherAdmin')
     }
 });
@@ -146,6 +142,7 @@ router.post('/studentInput', function(req, res) {
 router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent, function(req, res) {
     res.render('studentProfile', {
         user: req.user,
+        classes: getClassesOfUser(req.user),
         error: req.flash('error'),
         warning: req.flash('warning'),
         info: req.flash('info'),
@@ -154,8 +151,9 @@ router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent,
 });
 
 router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, function(req, res) {
+
     res.render('teacherAdmin', {
-        classes: utils.getAllClasses(),
+        classes: getClassesOfUser(req.user),
         user: req.user,
         error: req.flash('error'),
         warning: req.flash('warning'),
@@ -165,15 +163,15 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
 })
 
 router.get('/classPage', auth.ensureUserLoggedIn, function(req, res) {
-    if(!req.query.c) {
+    if (!req.query.c) {
         req.flash('error'),
-        res.redirect('/')
+            res.redirect('/')
     }
 
-    if(!utils.getClass(req.query.c)) {
+    if (!utils.getClass(req.query.c)) {
         req.flash('error'),
-        res.redirect('/')
-    } 
+            res.redirect('/')
+    }
     console.log("c is set to " + req.query.c);
     res.render('classPage', {
         user: req.user,
@@ -193,5 +191,18 @@ router.post('/teacherInput', function(req, res) {
 
 });
 
+
+function getClassesOfUser(user) {
+    var classes = {};
+
+    var allClasses = utils.getAllClasses();
+
+    for(var i = 0; i<user.classes.length; i++) {
+        var key = user.classes[i];
+        classes[key] = allClasses[key];
+    }
+
+    return classes;
+}
 
 module.exports = router;

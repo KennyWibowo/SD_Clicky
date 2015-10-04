@@ -25,21 +25,12 @@ el("asd").addEventListener("change", readImage, false);
 
 </style>
 
-<ul class="nav navbar-nav side-nav">
+<ul id="classlist" class="nav navbar-nav side-nav">
     <li id="welcome">Welcome,</li>
     <li id="name">{{user.name}}!</li>
-    <li>
-        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Class 1</a>
-    </li>
-    <li>
-        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Class 2</a>
-    </li>
-    <li>
-        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Class 3</a>
-    </li>
-    <li>
-        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Class 4</a>
-    </li>
+    {{#each classes}}
+    <li><a href="index.html"><i class="fa fa-fw fa-dashboard"></i> {{this.name}}</a></li>
+    {{/each}}
 </ul>
 
 <div id="page-wrapper">
