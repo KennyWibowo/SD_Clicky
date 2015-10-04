@@ -1,0 +1,50 @@
+<div class="container page-header">
+    <div class="col col-4 col-stack">
+
+        {{> alerts}}
+
+        <div class="form-signin panel panel-default clearfix signin-panel">
+
+            <form id="form-register" action="/register" method="post">
+
+                <div id="name">
+                    <input class="form-control" placeholder="Name"
+                           type="text"
+                           name="name">
+                </div>
+
+                <div id="login">
+                    <input class="form-control" placeholder="Username"
+                           type="text"
+                           name="username">
+                </div>
+
+                <div id="email">
+                    <input class="form-control" placeholder="Example@email.com"
+                           type="email"
+                           name="email">
+                </div>
+
+                <div id="password">
+                    <input class="form-control" placeholder="password" type="password"
+                           name="password">
+                </div>
+
+                <div id="password">
+                    <input class="form-control" placeholder="confirm password" type="password"
+                           name="password_conf">
+                </div>
+
+                 <div id="type">
+                    <input class="form-control" placeholder="Enter account type" type="Type"
+                           name="type">
+                </div>
+
+                <div id="submit">
+                    <input type="submit" class="btn pull-right btn-default" id="btn-login" value="Register">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

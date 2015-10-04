@@ -53,6 +53,22 @@ module.exports={
 		}
 
 	},
+
+    registerTeacher:function(username, password, email, name, type, pupils, callback)
+    {
+        if(users[username])
+        {
+            var error = new Error("User already exists")
+            return callback(error)
+        }
+        else
+        {
+            users[username]={"password":password, "id":currentid++, "type":type, "name":name, "email":email, "pupils":pupils}
+            console.log(users)
+            return callback(null, username)
+        }
+
+    }
 	
 	ensureUserLoggedIn: function (req, res, next) {
         // not logged in test
