@@ -12,6 +12,7 @@ var classes = {
         "pupils": ["Swashbuckler"],
         "lectures": {
             1: {
+                "time": "MWF 1-2PM"
                 "questions": {
                     1: {
                         "question": "How do you get swole?",
@@ -107,49 +108,41 @@ module.exports = {
     getClass: function( classID ){
       return classes[classID];
           },
-    lectureCreate: function(user, className, lectureName, lectureTime) {
-        if (!user.classes) {
-            var error = new Error("You need to create a class first.");
-            return callback(error);
-        }
-        if (!user.classes[className]) {
+    lectureCreate: function(classID, lectureName, lectureTime) {
+        if (!classes[classID] ) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
-        if (user.classes[className].lectures[lectureName]) {
+        if (classes[classID].lectures[lectureName]) {
             var error = new Error("You've already created a lecture with that name");
             return callback(error);
         }
-        user.classes[className].lectures[lectureName] = {
+        classes[className].lectures[lectureName] = {
             "questions": {},
-            "lectureTime": lectureTime
+            "time": lectureTime
         }
     },
     questionAdd: function(user, className, lectureName, questionName, question, a, b, c, d, e, answer) {
-        if (!user.classes) {
-            var error = new Error("You need to create a class first.");
-            return callback(error);
-        }
-        if (!user.classes[className]) {
+        if (!classes[classID] ) {
             var error = new Error("Pick one of the classes you've already created");
             return callback(error);
         }
-        if (!user.classes[className].lectures[lectureName]) {
+        if (!classes[classID].lectures[lectureName]) {
             var error = new Error("Pick one of the lectures you've already created");
             return callback(error);
         }
-        if (user.classes[className].lectures[lectureName].questions[questionName]) {
+        if (classes[classID].lectures[lectureName].questions[questionName]) {
             var error = new Error("You've already created a question with this name");
             return callback(error);
         }
-        user.classes[className].lectures[lectureName].questions[questionName] = {
+        classes[classID].lectures[lectureName].questions[questionName] = {
             "question": question,
             "a": a,
             "b": b,
             "c": c,
             "d": d,
             "e": e,
-            "answer": answer
+            "correct": answer
         };
     }
 }
