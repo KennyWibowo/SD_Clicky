@@ -159,6 +159,28 @@ router.post('/studentInput', function(req, res) {
 
 });
 
+router.get("/classAdmin", auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, function(req, res) {
+    if(!req.query.c)
+    {
+        req.flash('error', 'Incorrect class page')
+        res.redirect('/')
+    }
+    if( !utils.getClass(req.query.c))
+    {
+        req.flash('error', 'Incorrect class page')
+        res.redirect('/')
+    }
+    res.render('classAdmin', {
+        classes: getClassesOfUser(req.user),
+        user: req.user,
+        myclass: utils.getClass(req.query.c),
+        error: req.flash('error'),
+        warning: req.flash('warning'),
+        info: req.flash('info'),
+        success: req.flash('success')
+    })
+})
+
 router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent, function(req, res) {
     res.render('studentProfile', {
         user: req.user,
