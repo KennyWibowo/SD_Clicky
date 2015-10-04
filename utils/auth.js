@@ -68,7 +68,7 @@ module.exports={
             return callback(null, username)
         }
 
-    }
+    },
 	
 	ensureUserLoggedIn: function (req, res, next) {
         // not logged in test
