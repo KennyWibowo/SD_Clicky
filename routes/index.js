@@ -135,6 +135,8 @@ router.get('/studentInput', auth.ensureUserLoggedIn, function(req, res) {
     });
 });
 
+var prevAns;
+
 router.post('/studentInput', function(req, res) {
 
     console.dir('Answer chosen is: ' + req.body.choice);
@@ -142,6 +144,21 @@ router.post('/studentInput', function(req, res) {
     if (req.body.choice) {
 
         req.flash('success', "Submitted");
+
+        if (prevAns && prevAns != req.body.choice) {
+            var question = utils.getQuestion(req.body.urlquery);
+            question[req.body.choice].studentsAnswered[req.user.usrname] = true;
+            question[prevAns].studentsAnswered[req.user.usrname] = false;
+            prevAns = req.body.choice;
+            console.dir(question);
+        } else if(!prevAns) {
+            var question = utils.getQuestion(req.body.urlquery);
+            question[req.body.choice].studentsAnswered[req.user.usrname] = true;
+            prevAns = req.body.choice;
+            console.dir(question);
+        }
+
+
         res.redirect('/studentInput?q=' + req.body.urlquery);
     } else {
         req.flash('error', "Please pick an answer");
