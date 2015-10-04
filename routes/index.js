@@ -155,7 +155,7 @@ router.get('/studentProfile', auth.ensureUserLoggedIn, auth.ensureUserIsStudent,
 
 router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, function(req, res) {
     res.render('teacherAdmin', {
-        utils: utils,
+        classes: utils.getAllClasses(),
         user: req.user,
         error: req.flash('error'),
         warning: req.flash('warning'),
