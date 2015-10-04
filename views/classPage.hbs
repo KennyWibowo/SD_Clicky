@@ -44,51 +44,20 @@
     <div id="acdnmenu">
         <ul>
             {{#each myclass.lectures}}
-                <li>Lecture{{@index+1}}
+                <li><b>Lecture {{addone @index}}</b>
                     <ul style="background:transparent url(2.jpg) no-repeat 160px bottom;">
+                    {{#each this.questions}}
+                        <li><a href="?3">{{this.question}}</a></li>
+                    {{/each}}
                     </ul>
                 </li>
             {{/each}}
         </ul>
     </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                
-            </div>
-        </div>
     <!-- /.container-fluid -->
-
-    
 
 </div>
 
-<!--
-<div id="acdnmenu">
-        <ul>
-            <li>Categories
-                <ul>
-                    <li><a href="?2">Product 2</a></li>
-                </ul>
-            </li>
-            <li>Support
-                <ul style="background:transparent url(2.jpg) no-repeat 160px bottom;">
-                    <li><a href="?3">Product Support</a></li>
-                    <li id="li22">Locations
-                        <ul>
-                            <li><a href="?4">How-To Resources</a></li>
-                            <li><a href="?5">Product Support</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="?6">Opening Time</a></li>
-                </ul>
-            </li>
-            <li id="li3">Technical Solutions
-                <ul>
-                    <li><a href="?b">Javascript Code</a></li>
-                    <li><a href="?c">CSS Code</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
--->
+
+

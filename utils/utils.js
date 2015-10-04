@@ -21,6 +21,28 @@ var classes = {
                 "d": "Really do nothing",
                 "e": "Eat sushi",
                 "correct": "b"
+            }, {
+                "questionName": "Fav Food",
+                "question": "What's your favorite food?",
+                "a": "Siraj's breakfast burrito",
+                "b": "Gyudon",
+                "c": "Lil Dipper ice cream",
+                "d": "Milk",
+                "e": "Sushi",
+                "correct": "a"
+            }
+            ]
+        }, {
+            "pass": "456efgh",
+            "questions": [{
+                "questionName": "OddOneOut",
+                "question": "What food was not present at SDHacks?",
+                "a": "Pizza",
+                "b": "Boba",
+                "c": "Spaghetti",
+                "d": "Sun Chips",
+                "e": "Apples",
+                "correct": "e"
             }]
         }]
     }
