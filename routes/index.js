@@ -7,13 +7,6 @@ var utils = require('../utils/utils')
 
 /* GET home page. */
 router.get('/', auth.ensureUserLoggedIn, function(req, res, next) {
-    res.render('sampleAnalysis', {
-        user: req.user,
-        error: req.flash('error'),
-        warning: req.flash('warning'),
-        info: req.flash('info'),
-        success: req.flash('success')
-    });
     if (req.user.type == "student") {
         res.redirect('/studentProfile')
     } else if (req.user.type == "teacher") {
@@ -198,6 +191,10 @@ router.get('/teacherAdmin', auth.ensureUserLoggedIn, auth.ensureUserIsTeacher, f
         info: req.flash('info'),
         success: req.flash('success')
     })
+})
+
+router.get('/sampleAnalysis', function(req, res) {
+    res.render('sampleAnalysis');
 })
 
 router.post('/teacher-classcreate', function(req, res) {
